@@ -1,71 +1,62 @@
 import React from 'react';
 
 class CartItem extends React.Component {
-    constructor() {
-        super();
-        this.state  = {
-            price : 999,
-            title: 'Iphone',
-            qty : 1,
-            img : ''
-        }
+    
 
-        this.testing();
-    }
-
-    increaseQty = () => {
-        // this.state.qty  += 1; 
+    // increaseQty = () => {
+    //     // this.state.qty  += 1; 
         
-        // setState first form
-        // this.setState({
-        //     qty: this.state.qty + 1,
-        // });
+    //     // setState first form
+    //     // this.setState({
+    //     //     qty: this.state.qty + 1,
+    //     // });
         
 
-        // setState from 2
-        this.setState((prevState) =>{
-            return {
-                qty : prevState.qty +1,
-            }
-        });
-    }
+    //     // setState from 2
+    //     this.setState((prevState) =>{
+    //         return {
+    //             qty : prevState.qty +1,
+    //         }
+    //     });
+    // }
 
-    decreaseQty = () => {
-        const { qty } = this.state;
-        if(qty==0){
-            return;
-        }
-        this.setState((prevState) =>{
-            return {
-                qty : prevState.qty -1,
-            }
-        });
-    }
+    // decreaseQty = () => {
+    //     const { qty } = this.props.product.qty;
+    //     if(qty==0){
+    //         return;
+    //     }
+    //     this.setState((prevState) =>{
+    //         return {
+    //             qty : prevState.qty -1,
+    //         }
+    //     });
+    // }
 
-    testing () {
-        const promise = new Promise((resolve, reject) =>{
-             setTimeout(() =>{
-                resolve('done');
-             }, 1000);
-        });
-        promise.then(() => {
-            this.setState({qty : this.state.qty + 10 });
+    // testing () {
+    //     const promise = new Promise((resolve, reject) =>{
+    //          setTimeout(() =>{
+    //             resolve('done');
+    //          }, 1000);
+    //     });
+    //     promise.then(() => {
+    //         this.setState({qty : this.state.qty + 10 });
 
-            console.log('state 1', this.state);
-        });
-    }
+    //         console.log('state 1', this.state);
+    //     });
+    // }
     render (){
+        console.log("this.props", this.props.product);
 
-        const {price, title, qty} = this.state;
+        const {price, title, qty, img} = this.props.product;
         return (
             <div className='cart-item'>
                 <div className='left-block'>
                     <img  style={styles.image} />
                 </div>
                 <div className='right-block'>
-                    <div style={ { fontSize : 25} }>{this.state.title}</div>
+                    <div style={ { fontSize : 25} }>{title}</div>
                     <div style={ { color : '#777'} }>{price}</div>
-                    <div style={ { color : '#777'} }>{this.state.qty}</div>
+                    <div style={ { color : '#777'} }>{qty}</div>
                     <div className='cart-item-action'>
                         {/* Buttons */}
                         <img 
